@@ -1,0 +1,57 @@
+# Operating System & Terminal Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets, Keys & Credentials (CRITICAL)
+*.pem
+*.key
+*.pub
+*.pfx
+*.kdbx
+id_rsa
+id_ecdsa
+id_ed25519
+id_*
+!id_*.example
+.env
+.env.*
+!.env.example
+secrets.json
+
+# Virtual Machine Hard Disks & Hypervisor Artifacts
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.nvram
+*.vbox
+*.vbox-prev
+*.ova
+*.ovf
+*.iso
+
+# Telemetry, PCAP & Large Memory Dumps
+*.pcap
+*.pcapng
+*.cap
+*.dmp
+*.raw
+*.mem
+*.log
+!**/evidence/**/*.log
+!**/commands/**/*.log
+
+# Language & Build Artifacts
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+dist/
+build/
+target/
