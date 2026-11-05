@@ -1,0 +1,27 @@
+# ==============================================================================
+# FAIL2BAN MULTI-SERVICE JAIL (/etc/fail2ban/jail.local)
+# Dynamic Layer 3/4 IP Banning for SSH, FTP (vsftpd), and SMB (Samba)
+# ==============================================================================
+[DEFAULT]
+ignoreip = 127.0.0.1/8 ::1
+bantime  = 1h
+findtime = 10m
+maxretry = 3
+backend  = systemd
+
+[sshd]
+enabled  = true
+port     = ssh
+maxretry = 3
+
+[vsftpd]
+enabled  = true
+port     = ftp,ftp-data,ftps,ftps-data
+logpath  = /var/log/vsftpd.log
+maxretry = 3
+
+[samba]
+enabled  = true
+port     = 135,139,445
+logpath  = /var/log/samba/log.*
+maxretry = 3

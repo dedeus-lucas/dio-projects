@@ -1,0 +1,6 @@
+# Synthetic Lab Accounts for Authentication Audit Analysis
+# Purpose: Demonstrate Username Enumeration & Password Spraying surface
+lab_guest
+lab_operator
+lab_auditor
+svc_backup

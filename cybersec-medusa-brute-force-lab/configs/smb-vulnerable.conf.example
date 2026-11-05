@@ -1,0 +1,23 @@
+# ==============================================================================
+# INSECURE BASELINE (FOR ARCHITECTURAL COMPARISON ONLY - DO NOT DEPLOY)
+# Demonstrates legacy Metasploitable-style SMB misconfigurations
+# ==============================================================================
+[global]
+   workgroup = WORKGROUP
+   server string = Legacy File Server
+   # VULNERABILITY 1: Allows legacy SMBv1/NT1 dialect & weak NTLMv1 hashes
+   server min protocol = NT1
+   ntlm auth = yes
+   lanman auth = yes
+   # VULNERABILITY 2: Permits unauthenticated Null Sessions (RID/User Enumeration)
+   map to guest = Bad User
+   restrict anonymous = 0
+   null passwords = yes
+   # VULNERABILITY 3: Bypasses OS-level PAM account lockout policies
+   obey pam restrictions = no
+
+[public_share]
+   path = /srv/samba/public
+   browsable = yes
+   writable = yes
+   guest ok = yes
