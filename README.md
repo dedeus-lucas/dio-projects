@@ -33,7 +33,7 @@ To allow seamless migration of historical laboratories without chronological num
 
 | Domain | Project Directory | Technical Scope | Primary Focus | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **CyberSec** | [`cybersec-medusa-brute-force-lab`](cybersec-medusa-brute-force-lab/) | Authentication Resilience, Brute-Force Mechanics & Hardening | Kali Linux, Debian 12, Medusa, SMB/FTP/Web Auth, PAM & Fail2Ban Mitigation | In Progress |
+| **CyberSec** | [`cybersec-medusa-brute-force-lab`](cybersec-medusa-brute-force-lab/) | Authentication Resilience, Brute-Force Mechanics & Hardening | Kali Linux, Debian 12, Medusa, SMB/FTP/Web Auth, PAM & Fail2Ban Mitigation | Completed |
 
 ---
 
@@ -102,7 +102,7 @@ Para permitir a incorporação contínua de projetos anteriores sem colisão de 
 
 | Domínio | Diretório do Projeto | Escopo Técnico | Foco Principal | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **CyberSec** | [`cybersec-medusa-brute-force-lab`](cybersec-medusa-brute-force-lab/) | Resiliência de Autenticação, Mecânica de Força Bruta e Hardening | Kali Linux, Debian 12, Medusa, Auth SMB/FTP/Web, Mitigação com PAM & Fail2Ban | Em Andamento |
+| **CyberSec** | [`cybersec-medusa-brute-force-lab`](cybersec-medusa-brute-force-lab/) | Resiliência de Autenticação, Mecânica de Força Bruta e Hardening | Kali Linux, Debian 12, Medusa, Auth SMB/FTP/Web, Mitigação com PAM & Fail2Ban | Concluído |
 
 ---
 
