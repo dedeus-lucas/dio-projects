@@ -1,0 +1,49 @@
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             10.0.2.15/24 fd17:625c:f037:2:8432:9a17:7742:2bf4/64 fe80::2b2d:99ef:a448:5e00/64 
+eth1             UP             192.168.56.20/24 fe80::a00:27ff:fe82:aba5/64 
+192.168.56.1 lladdr 0a:00:27:00:00:0a DELAY 
+PING 192.168.56.10 (192.168.56.10) 56(84) bytes of data.
+64 bytes from 192.168.56.10: icmp_seq=1 ttl=64 time=1.69 ms
+64 bytes from 192.168.56.10: icmp_seq=2 ttl=64 time=0.981 ms
+
+--- 192.168.56.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 0.981/1.337/1.694/0.356 ms
+Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+
+Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+  Available modules in "." :
+
+  Available modules in "/usr/lib/x86_64-linux-gnu/medusa/modules" :
+    + cvs.mod : Brute force module for CVS sessions : version 2.0
+    + ftp.mod : Brute force module for FTP/FTPS sessions : version 2.1
+    + http.mod : Brute force module for HTTP : version 2.1
+    + imap.mod : Brute force module for IMAP sessions : version 2.0
+    + mssql.mod : Brute force module for M$-SQL sessions : version 2.0
+    + mysql.mod : Brute force module for MySQL sessions : version 2.0
+    + nntp.mod : Brute force module for NNTP sessions : version 2.0
+    + pcanywhere.mod : Brute force module for PcAnywhere sessions : version 2.0
+    + pop3.mod : Brute force module for POP3 sessions : version 2.0
+    + postgres.mod : Brute force module for PostgreSQL sessions : version 2.0
+    + rdp.mod : Brute force module for RDP (Microsoft Terminal Server) sessions : version 0.3
+    + rexec.mod : Brute force module for REXEC sessions : version 2.0
+    + rlogin.mod : Brute force module for RLOGIN sessions : version 2.0
+    + rsh.mod : Brute force module for RSH sessions : version 2.0
+    + smbnt.mod : Brute force module for SMB (SMBv1-3, Signing, LM/NTLM/LMv2/NTLMv2) sessions : version 3.0
+    + smtp-vrfy.mod : Brute force module for verifying SMTP accounts (VRFY/EXPN/RCPT TO) : version 2.1
+    + smtp.mod : Brute force module for SMTP Authentication with TLS : version 2.0
+    + snmp.mod : Brute force module for SNMP Community Strings : version 2.1
+    + ssh.mod : Brute force module for SSH v2 sessions : version 2.1
+    + svn.mod : Brute force module for Subversion sessions : version 2.1
+    + telnet.mod : Brute force module for telnet sessions : version 2.0
+    + vmauthd.mod : Brute force module for the VMware Authentication Daemon : version 2.0
+    + vnc.mod : Brute force module for VNC sessions : version 2.2
+    + web-form.mod : Brute force module for web forms : version 2.1
+    + wrapper.mod : Generic Wrapper Module : version 2.0
+
+
+Version 4.24.3-Debian-4.24.3+dfsg-1
+Nmap version 7.99 ( https://nmap.org )
+Platform: x86_64-pc-linux-gnu
