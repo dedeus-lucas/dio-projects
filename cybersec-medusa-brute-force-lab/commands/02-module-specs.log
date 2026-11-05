@@ -1,0 +1,115 @@
+Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+smbnt.mod (3.0) JoMo-Kun <jmk@foofus.net> :: Brute force module for SMB (SMBv1-3, Signing, LM/NTLM/LMv2/NTLMv2) sessions
+
+Available module options:
+  GROUP:? (DOMAIN, LOCAL*, BOTH)
+    Option sets NetBIOS workgroup field.
+    DOMAIN: Check credentials against this hosts primary domain controller via this host.
+    LOCAL:  Check local account.
+    BOTH:   Check both. This leaves the workgroup field set blank and then attempts to check
+            the credentials against the host. If the account does not exist locally on the 
+            host being tested, that host then queries its domain controller.
+  GROUP_OTHER:? 
+    Option allows manual setting of domain to check against. Use instead of GROUP.
+  PASS:?  (PASSWORD*, HASH, MACHINE)
+    PASSWORD: Use normal password.
+    HASH:     Use a NTLM hash rather than a password.
+    MACHINE:  Use the machine's NetBIOS name as the password.
+  AUTH:?  (LM, NTLM, LMv2*, NTLMv2)
+    Option sets LAN Manager Authentication level.
+    LM: 
+    NTLM: 
+    LMv2: 
+    NTLMv2: 
+  MODE:?  (AUTO*, NETBIOS, SMB2)
+    NETBIOS: Attempt NetBIOS-only connection (pre-Windows 2000).
+    SMB2:    Attempt SMBv2-only connection.
+    AUTO:    Attempt SMBv1, SMBv2 and NetBIOS (pre-Windows 2000).
+             SMB communications use either port 139 or 445/tcp. Pre-Windows 2000 connections
+             ran on top of NetBIOS using 139/tcp. Later versions of SMB use 445/tcp. The
+             default behavior for Medusa is to attempt to connect to 445/tcp. If successful,
+             Medusa will initiate an SMBv1 connection, followed by SMBv2. If the port is not
+             open, Medusa will attempt an SMBv1 connection to the NetBIOS port.
+
+(*) Default value
+
+Usage examples:
+
+1: Normal boring check...
+    medusa -M smbnt -h somehost -u someuser -p somepassword
+
+2: Testing domain credentials against a client system...
+    medusa -M smbnt -h somehost -U users.txt -p password -m GROUP:DOMAIN
+
+3: Testing each credential from a PwDump file against the target's domain via the target...
+    medusa -M smbnt -h somehost -C pwdump.txt -m PASS:HASH -m GROUP:DOMAIN
+
+4: Testing each hash from a PwDump file against a specific user local to the target...
+    medusa -M smbnt -H hosts.txt -C pwdump.txt -u someuser -m PASS:HASH
+
+5: Testing an individual NTLM hash...
+    medusa -M smbnt -H hosts.txt -u administrator -p 92D887C8010492C2944E2DF489A880E4:7A2EDE4F51BC5A03984C6BA2C239CF63::: -m PASS:HASH
+
+Access level:
+
+This module performs both an SMB authentication request (Session Setup AndX) and a 
+share connection request (Tree Connect AndX). The share connection request is for the 
+default hidden administrative share ADMIN$. The goal is to identify if the credentials 
+being tested have administrative rights to the target system. The following examples 
+highlight how to interrupt the responses.
+
+  Valid administrative-level credentials: [SUCCESS (ADMIN$ - Access Allowed)]
+  Valid user-level credentials: [SUCCESS (ADMIN$ - Access Denied)]
+  Valid credentials, access level unknown: [SUCCESS (ADMIN$ - Share Unavailable)]
+
+Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+ftp.mod (2.1) pMonkey <pmonkey@foofus.net> :: Brute force module for FTP/FTPS sessions
+
+Available module options:
+MODE:? (NORMAL*, EXPLICIT, IMPLICIT)
+
+  EXPLICIT: AUTH TLS Mode as defined in RFC 4217
+     Explicit FTPS (FTP/SSL) connects to a FTP service in the clear. Prior to
+     sending any credentials, however, an "AUTH TLS" command is issued and a
+     SSL session is negotiated.
+
+  IMPLICIT: FTP over SSL (990/tcp)
+     Implicit FTPS requires a SSL handshake to be performed before any FTP
+     commands are sent. This service typically resides on tcp/990. If the user
+     specifies this option or uses the "-n" (SSL) option, the module will
+     default to this mode and tcp/990.
+
+  NORMAL
+     The default behaviour if no MODE is specified. Authentication is attempted
+     in the clear. If the server requests encryption for the given user,
+     Explicit FTPS is utilized.
+
+
+Example Usage:
+    medusa -M ftp -h host -u username -p password
+    medusa -M ftp -s -h host -u username -p password
+    medusa -M ftp -m MODE:EXPLICIT -h host -u username -p password
+
+(*) Default value
+
+Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+web-form.mod (2.1) Luciano Bello <luciano@linux.org.ar> :: Brute force module for web forms
+
+Available module options:
+  USER-AGENT:?       User-agent value. Default: "I'm not Mozilla, I'm Ming Mong".
+  FORM:?             Target form to request. Default: "/"
+  DENY-SIGNAL:?      Authentication failure message. Attempt flagged as successful if text is not present in
+                     server response. Default: "Login incorrect"
+  CUSTOM-HEADER:?    Custom HTTP header.
+                     More headers can be defined by using this option several times.
+  FORM-DATA:<METHOD>?<FIELDS>
+                     Methods and fields to send to web service. Valid methods are GET and POST. The actual form
+                     data to be submitted should also be defined here. Specifically, the fields: username and
+                     password. The username field must be the first, followed by the password field.
+                     Default: "post?username=&password="
+
+Usage example: "-M web-form -m USER-AGENT:"g3rg3 gerg" -m FORM:"webmail/index.php" -m DENY-SIGNAL:"deny!"
+                 -m FORM-DATA:"post?user=&pass=&submit=True" -m CUSTOM-HEADER:"Cookie: name=value"

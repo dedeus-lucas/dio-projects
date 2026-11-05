@@ -1,0 +1,27 @@
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-11-05 14:43 -0300
+Nmap scan report for 192.168.56.10
+Host is up (0.0037s latency).
+
+PORT    STATE  SERVICE
+21/tcp  closed ftp
+22/tcp  open   ssh
+80/tcp  closed http
+139/tcp closed netbios-ssn
+445/tcp closed microsoft-ds
+MAC Address: 08:00:27:A7:3A:D2 (Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 2.21 seconds
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0            0.0.0.0:5353       0.0.0.0:*          
+udp   UNCONN 0      0            0.0.0.0:34582      0.0.0.0:*          
+udp   UNCONN 0      0            0.0.0.0:68         0.0.0.0:*          
+udp   UNCONN 0      0               [::]:48790         [::]:*          
+udp   UNCONN 0      0               [::]:5353          [::]:*          
+tcp   LISTEN 0      128          0.0.0.0:22         0.0.0.0:*          
+tcp   LISTEN 0      128        127.0.0.1:631        0.0.0.0:*          
+tcp   LISTEN 0      128            [::1]:631           [::]:*          
+tcp   LISTEN 0      128             [::]:22            [::]:*          
+
+auth	[success=1 default=ignore]	pam_unix.so nullok
+auth	requisite			pam_deny.so
+auth	required			pam_permit.so
